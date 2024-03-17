@@ -19,7 +19,7 @@ fun <E> transpose(matrix: Matrix<E>): Matrix<E> {
     }
     return result
 }
-/**По часовой)) */
+
 fun <E> rotate(matrix: Matrix<E>): Matrix<E> //= transpose(matrix)
 {
     if (matrix.width < 1 || matrix.height < 1) return matrix
@@ -42,8 +42,8 @@ operator fun Matrix<Int>.plus(other: Matrix<Int>): Matrix<Int>
         if (this.height != other.height || this.width != other.width)
             throw IllegalArgumentException("Складывать можно только матрицы совпадающего размера")
         var result = createMatrix(this.height, this.width, 0)
-        for (i in 0 until this.width) {
-            for (j in 0 until this.height) {
+        for (i in 0 until this.height) {
+            for (j in 0 until this.width) {
                 result[i, j] = this[i, j] + other[i, j]
             }
         }
@@ -56,8 +56,8 @@ operator fun Matrix<Int>.plus(other: Matrix<Int>): Matrix<Int>
  */
 operator fun Matrix<Int>.unaryMinus(): Matrix<Int> {
     var result = createMatrix(this.height, this.width, 1)
-    for (i in 0 until this.width) {
-        for (j in 0 until this.height) {
+    for (i in 0 until this.height) {
+        for (j in 0 until this.width) {
             result[i, j] = -1*this[i,j]
         }
     }
@@ -73,9 +73,10 @@ operator fun Matrix<Int>.unaryMinus(): Matrix<Int> {
 operator fun Matrix<Int>.times(other: Matrix<Int>): Matrix<Int> {
     if (this.width != other.height )
         throw IllegalArgumentException("Матрицы можно умножать, только если ширина первой матрицы совпадает с высотой второй матрицы.")
-    var result = createMatrix(this.height, this.width, 1)
+
+    var result = createMatrix(this.height, other.width, 1)
     for (i in 0 until this.height) {
-        for (j in 0 until this.width) {
+        for (j in 0 until other.width) {
             result[i, j] = this[j, i]*other[j, i]
         }
     }
@@ -98,28 +99,34 @@ operator fun Matrix<Int>.times(other: Matrix<Int>): Matrix<Int> {
  */
 fun findHoles(matrix: Matrix<Int>): Holes {
     var rows = mutableListOf<Int>()
-    var isHole = true
+    var isHole:Boolean
+    //-------------------------------------
     for (i in 0 until matrix.height) {
+        isHole = true
         for (j in 0 until matrix.width) {
-           if(matrix[i, j]!=0)
-               isHole =false
-           break
+           if(matrix[i, j] != 0)
+           {    isHole =false
+                break
+           }
         }
         if (isHole)
             rows.add(i)
     }
+    //--------------------------------------
     var columns = mutableListOf<Int>()
-    isHole = true
+
     for (j in 0 until matrix.width) {
+        isHole = true
         for (i in 0 until matrix.height ) {
-            if(matrix[i, j]!=0)
+            if(matrix[i, j]!=0){
                 isHole =false
-            break
+                break
+            }
         }
         if (isHole)
             columns.add(j)
     }
-    return Holes(rows, columns)
+    return Holes(rows.toList(), columns.toList())
 }
 
 /**
@@ -146,8 +153,9 @@ data class Holes(val rows: List<Int>, val columns: List<Int>)
  * Если наложение невозможно, то первый элемент тройки "нет" и сдвиги могут быть любыми.
  */
 fun canOpenLock(key: Matrix<Int>, lock: Matrix<Int>): Triple<Boolean, Int, Int> {
-    for (i in 0 until lock.height-key.height) {
-        for (j in 0 until lock.width-key.width) {
+    for (i in 0 .. lock.height-key.height) {
+        for (j in 0 .. lock.width-key.width) {
+
             var isKey = true
             for (kr in 0 until key.height) {
                 for (kc in 0 until key.width) {
@@ -160,6 +168,7 @@ fun canOpenLock(key: Matrix<Int>, lock: Matrix<Int>): Triple<Boolean, Int, Int> 
                     break;
                 }
             }
+
             if (isKey){
                 return Triple<Boolean, Int, Int>(isKey,i,j)
             }

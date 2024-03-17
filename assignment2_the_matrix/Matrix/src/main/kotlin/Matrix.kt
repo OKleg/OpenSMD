@@ -59,17 +59,17 @@ class MatrixImpl<E>(height: Int, width: Int, e: E) : Matrix<E> {
 
     override fun get(row: Int, column: Int): E
     {
-        return this[row,column]
+        return m[row][column]
     }
 
     override fun get(cell: Cell): E =  m[cell.row][cell.column]
 
     override fun set(row: Int, column: Int, value: E) {
-        this[row,column] = value
+        m[row][column] = value
     }
 
     override fun set(cell: Cell, value: E) {
-        this[cell.row,cell.column] = value
+        m[cell.row][cell.column] = value
     }
 
     override fun equals(other: Any?): Boolean {
@@ -77,7 +77,7 @@ class MatrixImpl<E>(height: Int, width: Int, e: E) : Matrix<E> {
             return false
         for (i in 0 until this.height) {
             for (j in 0 until this.width) {
-                if (this[i, j] != other[i, j] )
+                if (m[i][j] != other[i, j] )
                     return false
             }
         }
@@ -88,7 +88,7 @@ class MatrixImpl<E>(height: Int, width: Int, e: E) : Matrix<E> {
         var result: String = ""
         for (i in 0 until height) {
             for (j in 0 until width) {
-                result += "${this[i, j]}"
+                result += "${m[i][j]}"
             }
             result += "\n"
         }
