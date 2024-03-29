@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="mmcs.assigment3_calc.viewmodel.Operation" />
+        <variable
+            name="viewModel"
+            type="mmcs.assigment3_calc.viewmodel.CalculatorViewModel" />
+    </data>
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white"
+        android:orientation="vertical"
+        tools:context=".view.MainActivity">
+
+        <TextView
+            android:id="@+id/math_operation"
+            android:layout_width="match_parent"
+            android:layout_height="160sp"
+            android:textColor="@android:color/black"
+            android:gravity="end"
+            android:ellipsize="end"
+            android:textSize="80sp"
+            android:text="@{viewModel.display}"
+        />
+<!--        <TextView
+            android:id="@+id/result_text"
+            android:layout_width="match_parent"
+            android:layout_height="100sp"
+            android:textColor="@android:color/black"
+            android:gravity="end"
+            android:ellipsize="end"
+            android:textSize="30sp"
+            android:singleLine="true"
+            android:text="0"
+        />-->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent">
+                <TextView
+                    style="@style/NumberButton"
+                    android:id="@+id/btn_7"
+                    android:text="7"
+                    android:onClick="@{viewModel::addDigit}"
+                />
+                <TextView
+                    style="@style/NumberButton"
+                    android:id="@+id/btn_4"
+                    android:text="4"
+                    android:onClick="@{viewModel::addDigit}"
+                    />
+                <TextView
+                    style="@style/NumberButton"
+                    android:id="@+id/btn_1"
+                    android:text="1"
+                    android:onClick="@{viewModel::addDigit}"
+                />
+                <TextView
+                    style="@style/NumberButton"
+                    android:id="@+id/dot_btn"
+                    android:text="."
+                    android:onClick="@{() -> viewModel.addPoint()}"
+                />
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent">
+                <TextView
+                    style="@style/NumberButton"
+                    android:id="@+id/btn_8"
+                    android:text="8"
+                    android:onClick="@{viewModel::addDigit}"
+                />
+                <TextView
+                    style="@style/NumberButton"
+                    android:id="@+id/btn_5"
+                    android:text="5"
+                    android:onClick="@{viewModel::addDigit}"
+                    />
+                <TextView
+                    style="@style/NumberButton"
+                    android:id="@+id/btn_2"
+                    android:text="2"
+                    android:onClick="@{viewModel::addDigit}"
+                    />
+                <TextView
+                    style="@style/NumberButton"
+                    android:id="@+id/btn_0"
+                    android:text="0"
+                    android:onClick="@{viewModel::addDigit}"
+                    />
+
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent">
+                <TextView
+                    style="@style/NumberButton"
+                    android:id="@+id/btn_9"
+                    android:text="9"
+                    android:onClick="@{viewModel::addDigit}"
+                    />
+                <TextView
+                    style="@style/NumberButton"
+                    android:id="@+id/btn_6"
+                    android:text="6"
+                    android:onClick="@{viewModel::addDigit}"
+                    />
+                <TextView
+                    style="@style/NumberButton"
+                    android:id="@+id/btn_3"
+                    android:text="3"
+                    android:onClick="@{viewModel::addDigit}"
+                    />
+                <TextView
+                    style="@style/NumberButton"
+                    android:id="@+id/equal_btn"
+                    android:onClick="@{viewModel::compute}"
+                    android:text="="
+                    />
+
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent">
+                <TextView
+                    style="@style/ActionButton"
+                    android:id="@+id/del_btn"
+                    android:onClick="@{() -> viewModel.clear()}"
+                    android:text="DEL"
+                    />
+                <TextView
+                    style="@style/ActionButton"
+                    android:id="@+id/div_btn"
+                    android:text="÷"
+                    android:onClick="@{() -> viewModel.addOperation(Operation.DIV)}"
+                    />
+
+                <TextView
+                    style="@style/ActionButton"
+                    android:id="@+id/mult_btn"
+                    android:text="×"
+                    android:onClick="@{() -> viewModel.addOperation(Operation.MUL)}"
+
+                    />
+                <TextView
+                    style="@style/ActionButton"
+                    android:id="@+id/minus_btn"
+                    android:text="-"
+                    android:onClick="@{() -> viewModel.addOperation(Operation.SUB)}"
+                    />
+                <TextView
+                    style="@style/ActionButton"
+                    android:id="@+id/plus_btn"
+                    android:text="+"
+                    android:onClick="@{() -> viewModel.addOperation(Operation.ADD)}"
+
+                    />
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+</layout>
