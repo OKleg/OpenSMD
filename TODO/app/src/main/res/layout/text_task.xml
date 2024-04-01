@@ -1,0 +1,18 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="wrap_content"
+    android:layout_width="fill_parent"
+    android:orientation="vertical">
+    <CheckBox
+        android:id="@+id/checkTask"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        android:text="CheckBoxTask" />
+    <TextView
+    android:id="@+id/textTask"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:textSize="22sp"
+    android:text="Text Tasks" />
+</LinearLayout>

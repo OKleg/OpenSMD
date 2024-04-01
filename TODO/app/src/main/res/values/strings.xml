@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">To Do List</string>
+    <string name="add_button">ADD</string>
+    <string name="total_checked">Total: {} - Checked: {}</string>
+    <string name="del">Del</string>
+
+</resources>
