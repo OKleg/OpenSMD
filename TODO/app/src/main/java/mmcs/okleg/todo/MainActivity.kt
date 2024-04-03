@@ -57,11 +57,11 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    private fun fillList(): ArrayList<TaskModel> {
-        val data = ArrayList<TaskModel>()
-        (0..5).forEach { i -> data.add(TaskModel(i,"$i task", "Some Text Task")) }
-        return data
-    }
+//    private fun fillList(): ArrayList<TaskModel> {
+//        val data = ArrayList<TaskModel>()
+//        (0..5).forEach { i -> data.add(TaskModel(i,"$i task", "Some Text Task")) }
+//        return data
+//    }
 //    override fun onCreate(savedInstanceState: Bundle?) {
 //        super.onCreate(savedInstanceState)
 //        setContentView(R.layout.activity_main)

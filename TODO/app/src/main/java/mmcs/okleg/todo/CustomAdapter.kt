@@ -25,7 +25,7 @@ class CustomAdapter(
 
         // Define click listener for the ViewHolder's View
         var checkTask: CheckBox = view.findViewById(R.id.checkTask)
-        var titleTask: TextView = view.findViewById(R.id.checkTask)
+        var titleTask: TextView = view.findViewById(R.id.titleTask)
         var taskDelete: Button = view.findViewById(R.id.taskDelete)
         //var textTask: Button = view.findViewById(R.id.taskDelete)
 
@@ -60,10 +60,8 @@ class CustomAdapter(
         // Get element from your dataset at this position and replace the
         // contents of the view with that element
         viewHolder.checkTask = dataSet[position].check
-        viewHolder.titleTask = dataSet[position].title
-        viewHolder.
-
-
+        viewHolder.titleTask.text = dataSet[position].title
+        //viewHolder.
     }
 
     // Return the size of your dataset (invoked by the layout manager)
