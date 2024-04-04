@@ -4,6 +4,7 @@ import android.util.Log
 import android.view.View
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.text.trimmedLength
 import mmcs.assigment3_calc.viewmodel.Calculator
 import mmcs.assigment3_calc.viewmodel.Operation
 
@@ -25,12 +26,16 @@ class CalculatorViewModel: BaseObservable(), Calculator {
             //    display.set(view.text.toString())
             isOpBedore=false
         }
+        formatDisplay()
+    }
+    private fun formatDisplay(){
+        display.set(display.get().toString().substring(0,8))
 
     }
-
     override fun addPoint() {
         display.set(display.get()+".")
         isOpBedore=false
+        formatDisplay()
     }
 
     override fun addOperation(op: Operation) {
@@ -51,6 +56,7 @@ class CalculatorViewModel: BaseObservable(), Calculator {
             }
             isOpBedore=true
             operations.push(op)
+            formatDisplay()
         }
     }
 
@@ -66,6 +72,8 @@ class CalculatorViewModel: BaseObservable(), Calculator {
                 display.set(longRes.toString())
             else
                 display.set(result.toString())
+
+            formatDisplay()
         } catch(e: Exception){
             Log.d("Ошибка","сообщение: ${e.message}")
             Toast.makeText(view.context,e.message,Toast.LENGTH_LONG).show()
