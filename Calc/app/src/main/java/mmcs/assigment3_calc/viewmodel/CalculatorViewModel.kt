@@ -28,8 +28,17 @@ class CalculatorViewModel: BaseObservable(), Calculator {
         }
         formatDisplay()
     }
+    private fun isLessEight(str: String):Int{
+        var len = str.length
+        return if (len<8)
+            len
+        else
+            8
+    }
     private fun formatDisplay(){
-        display.set(display.get().toString().substring(0,8))
+        var disp = display.get()
+        var len = isLessEight(display.get().toString())
+        display.set(disp.toString().substring(0,len))
 
     }
     override fun addPoint() {

@@ -1,69 +1,43 @@
 package mmcs.okleg.todo
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.widget.Button
-import android.widget.CheckBox
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.fragment.app.Fragment
+import androidx.navigation.Navigation
+import androidx.navigation.findNavController
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.NavigationUI
+import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.navigation.ui.setupWithNavController
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import mmcs.okleg.todo.databinding.ActivityMainBinding
+import mmcs.okleg.todo.ui.home.ListFragment
 import java.util.Stack
 
 
 class MainActivity : AppCompatActivity() {
-//    private lateinit var addTask: Button
-//    private lateinit var deleteTask: Button
-//    private lateinit var checkTask: CheckBox
+    lateinit var binding: ActivityMainBinding
 
-    private lateinit var listAdapter: CustomAdapter
-
-    private var modelToBeUpdated: Stack<TaskModel> = Stack()
-
-//    private val mOnProductClickListener = object : OnItemClickListener {
-//        override fun onUpdate(position: Int, model: TaskModel
-//) {
-//
-//            // store this model that we want to update
-//            // we will .pop() it when we want to update
-//            // the item in the adapter
-//            modelToBeUpdated.add(model)
-//
-//            // set the value of the clicked item in the edit text
-//            //checkTask.SetText(model.title)
-//        }
-//
-//        override fun onDelete(model: TaskModel) {
-//            // just remove the item from list
-//            listAdapter.removeItem(model)
-//        }
-//    }
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-
-        //addTask = findViewById(R.id.add_button)
-        //deleteTask = findViewById(R.id.recycler_view.taskDelete)
-       // checkTask = findViewById(R.id.recycler_view.checkTask)
-
-        val recyclerView: RecyclerView = findViewById(R.id.recycler_view)
-        recyclerView.layoutManager = LinearLayoutManager(this)
-        recyclerView.setHasFixedSize(true)
-
-        //recyclerView.adapter = CustomAdapter(fillList())
-
-//        val button = findViewById<Button>(R.id.add_button)
-//        button.setOnClickListener {
-//            // Code here executes on main thread after user presses button
-//        }
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
     }
-
+/*    private fun replaceFragment(fragment: Fragment){
+        val fragmentManager = supportFragmentManager
+        val fragmentTransaction = fragmentManager.beginTransaction()
+        fragmentTransaction.replace(R.id.nav_host_fragment_activity_main,fragment)
+        fragmentTransaction.commit()
+    }*/
 //    private fun fillList(): ArrayList<TaskModel> {
 //        val data = ArrayList<TaskModel>()
 //        (0..5).forEach { i -> data.add(TaskModel(i,"$i task", "Some Text Task")) }
 //        return data
 //    }
-//    override fun onCreate(savedInstanceState: Bundle?) {
-//        super.onCreate(savedInstanceState)
-//        setContentView(R.layout.activity_main)
-//    }
+
 }

@@ -1,0 +1,35 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="wrap_content"
+    android:layout_width="fill_parent"
+    android:orientation="vertical"
+    >
+    <TextView
+        android:id="@+id/new_item_check"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        android:text="CheckBoxTask" />
+
+    <TextView
+        android:id="@+id/new_item_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/save_button"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="64dp"
+        android:layout_marginBottom="64dp"
+        android:text="Text Tasks"
+        android:textSize="22sp" />
+
+    <Button
+        android:id="@+id/save_button"
+        android:layout_width="wrap_content"
+        android:layout_height="64dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="40dp"
+        android:layout_marginBottom="68dp"
+        android:text="@string/save_button"
+        android:textSize="32sp" />
+</RelativeLayout>

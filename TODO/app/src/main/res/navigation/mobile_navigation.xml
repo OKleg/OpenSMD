@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_new_item">
+>
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="mmcs.okleg.todo.ui.home.ListFragment"/>
+    <fragment
+        android:id="@+id/navigation_new_item"
+        android:name="mmcs.okleg.todo.ui.newItem.NewItemFragment"
+        tools:layout="@layout/new_list_item" />
+
+    <fragment
+        android:id="@+id/navigation_show_item"
+        android:name="mmcs.okleg.todo.ui.showItem.ShowItemFragment"
+        tools:layout="@layout/show_list_item" />
+</navigation>

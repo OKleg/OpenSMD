@@ -1,7 +1,6 @@
 package mmcs.okleg.todo
 
 import android.annotation.SuppressLint
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,7 +15,9 @@ class CustomAdapter(
     private val itemClickListener: OnItemClickListener,
     private val dataSet: ArrayList<TaskModel> = ArrayList()) :
     RecyclerView.Adapter<CustomAdapter.ViewHolder>() {
-
+    fun getDataSet():ArrayList<TaskModel>{
+        return dataSet
+    }
     /**
      * Provide a reference to the type of views that you are using
      * (custom ViewHolder)
@@ -35,7 +36,7 @@ class CustomAdapter(
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
         // Create a new view, which defines the UI of the list item
         val inflater = LayoutInflater.from(viewGroup.context)
-        val view =  inflater.inflate(R.layout.text_row_item, viewGroup, false)
+        val view =  inflater.inflate(R.layout.todo_list_item, viewGroup, false)
         val holder = ViewHolder(view)
         // item view is the root view for each row
         holder.itemView.setOnClickListener {
@@ -66,11 +67,11 @@ class CustomAdapter(
 
     // Return the size of your dataset (invoked by the layout manager)
     override fun getItemCount() = dataSet.size
-    fun addItem(model: TaskModel) {
+    public fun addItem(model: TaskModel) {
         dataSet.add(model)
         notifyItemInserted(dataSet.size)
     }
-    fun updateItem(model: TaskModel?) {
+    public fun updateItem(model: TaskModel?) {
 
         if (model == null) return // we cannot update the value because it is null
 
@@ -84,12 +85,12 @@ class CustomAdapter(
             }
         }
     }
-    fun removeItem(model: TaskModel) {
+    public fun removeItem(model: TaskModel) {
         val position = dataSet.indexOf(model)
         dataSet.remove(model)
         notifyItemRemoved(position)
     }
-    fun getNextItemId(): Int {
+    public fun getNextItemId(): Int {
         var id = 1
         if (dataSet.isNotEmpty()) {
             // .last is equivalent to .size() - 1
