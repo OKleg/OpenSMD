@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">TO DO</string>
+    <string name="title_home">Home</string>
+    <string name="title_details">More details</string>
+    <string name="title_new_item">Add New Item</string>
+    <string name="del">Del</string>
+    <string name="save_button">Save</string>
+    <string name="add_button">+</string>
+    <string name="title">Title</string>
+    <string name="textTask">Text</string>
+</resources>
